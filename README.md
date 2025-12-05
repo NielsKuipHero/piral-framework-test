@@ -1,15 +1,118 @@
-# Playground
+# Hero Platform - Piral Micro Frontend Architecture
 
-This is an interactive playground for developing a single micro frontend - known as a pilet.
+A micro frontend platform built with [Piral](https://piral.io/), implementing the Hero Platform design system. This project demonstrates how to structure a scalable micro frontend application using Piral's shell + pilet architecture.
 
-The app shell chosen for this playground is the [sample-piral](https://www.npmjs.com/package/sample-piral) one. There are some other pilets published for it. You can watch this [Piral instance in action online](https://demo-full.piral.io/).
+## Architecture Overview
 
-## Where to go?
+```
+hero-platform-piral/
+├── hero-piral/          # Piral Shell (Main Application)
+├── pilet-alpha/         # Dashboard Module
+├── pilet-beta/          # CV Parser Module
+└── pilet-gamma/         # Hero Scraping Module
+```
 
-Have a look at the [src/index.tsx](./src/index.tsx). This file is the entry module of the pilet. It exports a `setup` function that is used by an app shell to actually integrate the components from the micro frontend to the application.
+### Components
 
-The [src/MyPage.tsx](./src/MyPage.tsx) is a good example to see how one component (in this case a page) can actually use component(s) from other micro frontends. The mechanism is called "an extension component". The host component (in this case the page) is including an "extension slot", which will then be dynamically populated.
+| Component | Description | Port |
+|-----------|-------------|------|
+| **hero-piral** | Main shell application with layout, navigation, and routing | 1234 |
+| **pilet-alpha** | Dashboard with metrics, analytics, and reports | - |
+| **pilet-beta** | CV upload, parsing results, and statistics | - |
+| **pilet-gamma** | Job scraping, matching, and settings | - |
 
-The trick with extension slots is that they allow the host to actually define the behavior. What if no extension component was registered for this extension slot? You can define a callback. What if you want to change the order of the extension components? Go ahead. What if want to change or wrap the renderings of these extension components? The API of an extension slot allows you to do that, too.
+## Getting Started
 
-The example uses esbuild to build the code. You can change the used bundler by replacing `piral-cli-esbuild` in the [package.json](./package.json) with a different bundler, e.g., `piral-cli-vite` or `piral-cli-webpack5`. The choice is yours.
+### Prerequisites
+
+- Node.js >= 18
+- npm >= 9
+
+### Installation
+
+```bash
+# Install all dependencies
+npm run install:all
+
+# Or install individually
+cd hero-piral && npm install
+cd ../pilet-alpha && npm install
+cd ../pilet-beta && npm install
+cd ../pilet-gamma && npm install
+```
+
+### Development
+
+```bash
+# Start the shell (in one terminal)
+npm run start:shell
+
+# In separate terminals, start each pilet for hot-reload development
+npm run start:alpha
+npm run start:beta
+npm run start:gamma
+```
+
+### Building
+
+```bash
+# Build everything
+npm run build:all
+
+# Or build individually
+npm run build:shell
+npm run build:alpha
+npm run build:beta
+npm run build:gamma
+```
+
+## Project Structure
+
+### Shell (hero-piral)
+
+The shell provides:
+- **Layout**: Header with navigation, collapsible sidebar, main content area
+- **Design System**: Hero Platform brand colors and components
+- **Routing**: React Router integration
+- **Pilet Loading**: Loads pilets from feed or local development
+
+### Pilets
+
+Each pilet:
+- Registers pages via `api.registerPage()`
+- Registers menu items via `api.registerMenu()`
+- Registers dashboard tiles via `api.registerTile()`
+- Uses shared styles from the shell
+
+## Design System
+
+### Colors
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--hero-blue` | #073889 | Primary brand color |
+| `--hero-orange` | #f46015 | Accent, CTAs |
+| `--hero-yellow` | #ffbd0d | Highlights |
+| `--hero-green` | #22c55e | Success states |
+
+### Typography
+
+- Font: Inter
+- Sizes: text-xs (0.75rem) to text-3xl (1.875rem)
+
+## Migration from Module Federation
+
+This project is a Piral-based implementation of the original Module Federation setup:
+
+| Module Federation | Piral Equivalent |
+|-------------------|------------------|
+| `mf-master` | `hero-piral` (shell) |
+| `mf-app-alpha` | `pilet-alpha` |
+| `mf-app-beta` | `pilet-beta` |
+| `mf-app-gamma` | `pilet-gamma` |
+| `vite-plugin-federation` | Piral CLI + feed |
+| `remoteEntry.js` | Pilet bundles |
+
+## License
+
+MIT

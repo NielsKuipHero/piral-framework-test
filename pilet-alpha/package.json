@@ -1,0 +1,37 @@
+{
+	"name": "pilet-alpha",
+	"version": "1.0.0",
+	"description": "Dashboard Module - Hero Platform Pilet",
+	"main": "dist/index.js",
+	"source": "src/index.tsx",
+	"scripts": {
+		"start": "pilet debug",
+		"build": "pilet build"
+	},
+	"peerDependencies": {
+		"react": "*",
+		"react-dom": "*",
+		"react-router": "*",
+		"react-router-dom": "*",
+		"hero-piral": "*"
+	},
+	"devDependencies": {
+		"@types/node": "latest",
+		"@types/react": "^18.0.0",
+		"@types/react-dom": "^18.0.0",
+		"@types/react-router": "^5.1.20",
+		"@types/react-router-dom": "^5.3.3",
+		"piral-cli": "^1.0.0",
+		"piral-cli-esbuild": "^1.0.0",
+		"hero-piral": "file:../hero-piral",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router": "^5.3.4",
+		"react-router-dom": "^5.3.4",
+		"typescript": "latest"
+	},
+	"piral": {
+		"name": "hero-piral"
+	}
+}
+

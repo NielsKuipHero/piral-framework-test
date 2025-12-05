@@ -1,34 +1,30 @@
 {
-  "name": "my-first-pilet",
-  "version": "0.0.0",
-  "scripts": {
-    "start": "pilet debug"
-  },
-  "main": "dist/index.js",
-  "source": "src/index.tsx",
-  "peerDependencies": {
-    "react": "*",
-    "react-dom": "*",
-    "react-router": "*",
-    "react-router-dom": "*",
-    "sample-piral": "*"
-  },
-  "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/react-router": "^5.1.8",
-    "@types/react-router-dom": "^5.1.6",
-    "piral-cli": "next",
-    "piral-cli-esbuild": "next",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-router": "5.2.1",
-    "react-router-dom": "5.3.0",
-    "sample-piral": "next",
-    "typescript": "latest"
-  },
-  "piral": {
-    "name": "sample-piral"
-  }
+	"name": "hero-platform-piral",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Hero Platform - Piral Micro Frontend Architecture",
+	"workspaces": [
+		"hero-piral",
+		"pilet-alpha",
+		"pilet-beta",
+		"pilet-gamma"
+	],
+	"scripts": {
+		"install:all": "npm install && cd hero-piral && npm install && cd ../pilet-alpha && npm install && cd ../pilet-beta && npm install && cd ../pilet-gamma && npm install",
+		"start:shell": "cd hero-piral && npm start",
+		"start:alpha": "cd pilet-alpha && npm start",
+		"start:beta": "cd pilet-beta && npm start",
+		"start:gamma": "cd pilet-gamma && npm start",
+		"build:shell": "cd hero-piral && npm run build",
+		"build:alpha": "cd pilet-alpha && npm run build",
+		"build:beta": "cd pilet-beta && npm run build",
+		"build:gamma": "cd pilet-gamma && npm run build",
+		"build:all": "npm run build:shell && npm run build:alpha && npm run build:beta && npm run build:gamma"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NielsKuipHero/piral-framework-test"
+	},
+	"author": "Niels Kuip",
+	"license": "MIT"
 }
