@@ -24,7 +24,7 @@
 		"@types/react-router": "^5.1.20",
 		"@types/react-router-dom": "^5.3.3",
 		"piral-cli": "^1.0.0",
-		"piral-cli-esbuild": "^1.0.0",
+		"piral-cli-webpack5": "^1.9.2",
 		"typescript": "latest"
 	},
 	"dependencies": {
