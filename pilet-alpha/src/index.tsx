@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import type { PiletApi } from 'hero-piral';
 
-// Lazy load pages for better performance
-const AlphaOverview = React.lazy(() => import('./pages/AlphaOverview'));
-const AlphaAnalytics = React.lazy(() => import('./pages/AlphaAnalytics'));
-const AlphaReports = React.lazy(() => import('./pages/AlphaReports'));
+// Simple test component
+const TestPage = () => (
+	<div style={{ padding: '20px', background: 'white', borderRadius: '12px' }}>
+		<h1 style={{ color: '#073889' }}>Alpha Dashboard</h1>
+		<p>Dit is de Alpha module - succesvol geladen!</p>
+	</div>
+);
 
-export function setup(api: PiletApi) {
-	// Register pages
-	api.registerPage('/alpha', AlphaOverview);
-	api.registerPage('/alpha/analytics', AlphaAnalytics);
-	api.registerPage('/alpha/reports', AlphaReports);
+export function setup(api: any) {
+	// Register a simple test page first
+	api.registerPage('/alpha', TestPage);
 
 	// Register menu items (optional, if shell doesn't have hardcoded menu)
 	api.registerMenu(() => (

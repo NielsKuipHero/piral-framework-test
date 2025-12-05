@@ -11,7 +11,13 @@ const instance = createInstance({
 		components: {
 			Layout,
 			LoadingIndicator: () => <div className="loading"><div className="loading__spinner" /><p>Laden...</p></div>,
-			ErrorInfo: ({ error }: { error?: Error }) => <div className="error">Er is een fout opgetreden: {error?.message}</div>,
+			ErrorInfo: ({ error, type }: { error?: Error; type?: string }) => (
+				<div className="error">
+					<strong>Er is een fout opgetreden{type ? ` (${type})` : ''}:</strong>
+					<p>{error?.message || 'Onbekende fout'}</p>
+					{error?.stack && <pre style={{ fontSize: '12px', overflow: 'auto' }}>{error.stack}</pre>}
+				</div>
+			),
 		},
 	},
 	plugins: [
