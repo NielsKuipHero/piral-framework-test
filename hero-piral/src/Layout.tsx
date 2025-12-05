@@ -185,9 +185,53 @@ const Sidebar: React.FC<{ collapsed: boolean; onToggle: () => void }> = ({ colla
 	);
 };
 
+// Default Dashboard Content
+const DefaultDashboard: React.FC = () => (
+	<div className="dashboard">
+		<div className="metrics-grid">
+			<div className="metric-card metric-card--blue">
+				<div className="metric-card__title">CV's Geparsed</div>
+				<div className="metric-card__value">1,234</div>
+				<div className="metric-card__subtitle">+12% deze maand</div>
+			</div>
+			<div className="metric-card metric-card--orange">
+				<div className="metric-card__title">Interim Opdrachten</div>
+				<div className="metric-card__value">56</div>
+				<div className="metric-card__subtitle">8 nieuw vandaag</div>
+			</div>
+			<div className="metric-card metric-card--green">
+				<div className="metric-card__title">Matches</div>
+				<div className="metric-card__value">89</div>
+				<div className="metric-card__subtitle">Top performer</div>
+			</div>
+			<div className="metric-card metric-card--yellow">
+				<div className="metric-card__title">Actieve Gebruikers</div>
+				<div className="metric-card__value">24</div>
+				<div className="metric-card__subtitle">Online nu: 8</div>
+			</div>
+		</div>
+		<div className="welcome">
+			<h1 className="welcome__title">Welkom bij Hero Platform</h1>
+			<p className="welcome__description">
+				Dit is het centrale platform voor al je Hero tools en services.
+				Selecteer een module in het menu om te beginnen.
+			</p>
+			<ul className="welcome__list">
+				<li><strong>Dashboard:</strong> Bekijk overzichten, analytics en rapportages</li>
+				<li><strong>CV Parser:</strong> Upload en parse CV's automatisch</li>
+				<li><strong>Hero Scraping:</strong> Vind interim opdrachten en matches</li>
+			</ul>
+		</div>
+	</div>
+);
+
 // Main Layout Component
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
 	const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+	const location = useLocation();
+
+	// Show default dashboard on root path or when no content
+	const showDefaultDashboard = location.pathname === '/' || !children;
 
 	return (
 		<div className="app">
@@ -199,7 +243,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 				/>
 				<main className={`main ${sidebarCollapsed ? 'main--sidebar-collapsed' : ''}`}>
 					<div className="main__content">
-						{children}
+						{showDefaultDashboard ? <DefaultDashboard /> : children}
 					</div>
 				</main>
 			</div>
