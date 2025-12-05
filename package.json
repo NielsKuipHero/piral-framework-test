@@ -1,0 +1,34 @@
+{
+  "name": "my-first-pilet",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "pilet debug"
+  },
+  "main": "dist/index.js",
+  "source": "src/index.tsx",
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "react-router": "*",
+    "react-router-dom": "*",
+    "sample-piral": "*"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router": "^5.1.8",
+    "@types/react-router-dom": "^5.1.6",
+    "piral-cli": "next",
+    "piral-cli-esbuild": "next",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router": "5.2.1",
+    "react-router-dom": "5.3.0",
+    "sample-piral": "next",
+    "typescript": "latest"
+  },
+  "piral": {
+    "name": "sample-piral"
+  }
+}

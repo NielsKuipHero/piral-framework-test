@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["sass-plugin-0:/home/projects/my-first-pilet/src/style.scss"],
+  "sourcesContent": [".boxed {\n  padding: 1rem;\n  border: 1px dashed green;\n}"],
+  "mappings": ";AAAA;AACE;AACA;AAAA;",
+  "names": []
+}
