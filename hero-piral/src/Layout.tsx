@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import type { LayoutProps } from 'piral-core';
-import { Menu } from 'piral-menu';
+import type { LayoutProps } from 'piral';
+import { Menu } from 'piral';
 
 // Icons
 function IconMenu() {
@@ -230,8 +230,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 	const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 	const location = useLocation();
 
-	// Show default dashboard on root path or when no content
-	const showDefaultDashboard = location.pathname === '/' || !children;
+	// Show default dashboard only on root path
+	const showDefaultDashboard = location.pathname === '/';
 
 	return (
 		<div className="app">

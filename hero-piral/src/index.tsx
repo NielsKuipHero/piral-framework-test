@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { createInstance, Piral } from 'piral-core';
-import { createDashboardApi } from 'piral-dashboard';
-import { createMenuApi } from 'piral-menu';
+import { createInstance, Piral, createStandardApi } from 'piral';
 import { createRoot } from 'react-dom/client';
 import { Layout } from './Layout';
 import './style.css';
@@ -20,10 +18,7 @@ const instance = createInstance({
 			),
 		},
 	},
-	plugins: [
-		createDashboardApi(),
-		createMenuApi(),
-	],
+	plugins: createStandardApi(),
 	requestPilets() {
 		// For development, load pilets from local feed
 		// In production, this would fetch from a pilet feed service

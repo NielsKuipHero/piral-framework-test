@@ -23,7 +23,7 @@
 		"@types/react-router-dom": "^5.3.3",
 		"piral-cli": "^1.0.0",
 		"piral-cli-webpack5": "^1.0.0",
-		"hero-piral": "file:../hero-piral",
+		"hero-piral": "file:../hero-piral/dist/emulator/hero-piral-1.0.0.tgz",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router": "^5.3.4",
@@ -34,4 +34,3 @@
 		"name": "hero-piral"
 	}
 }
-
