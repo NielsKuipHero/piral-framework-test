@@ -3,13 +3,8 @@
 	"version": "1.0.0",
 	"private": true,
 	"description": "Hero Platform - Piral Micro Frontend Architecture",
-	"workspaces": [
-		"hero-piral",
-		"pilet-alpha",
-		"pilet-beta",
-		"pilet-gamma"
-	],
 	"scripts": {
+		"start": "cd hero-piral && npm start",
 		"install:all": "npm install && cd hero-piral && npm install && cd ../pilet-alpha && npm install && cd ../pilet-beta && npm install && cd ../pilet-gamma && npm install",
 		"start:shell": "cd hero-piral && npm start",
 		"start:alpha": "cd pilet-alpha && npm start",

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { LayoutProps } from 'piral-core';
-import { Menu, MenuContainer } from 'piral-menu';
+import { Menu } from 'piral-menu';
 
 // Icons
 function IconMenu() {
@@ -169,7 +169,7 @@ const Sidebar: React.FC<{ collapsed: boolean; onToggle: () => void }> = ({ colla
 				))}
 
 				{/* Menu items registered by pilets */}
-				<MenuContainer type="general" />
+				<Menu type="general" />
 			</nav>
 
 			{!collapsed && (

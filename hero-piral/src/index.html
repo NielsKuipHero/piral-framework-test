@@ -7,6 +7,70 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--hero-blue: #073889;
+			--hero-orange: #f46015;
+			--hero-yellow: #ffbd0d;
+			--hero-green: #22c55e;
+			--hero-blue-soft: #d3e6f0;
+			--hero-blue-hairline: #f8fafc;
+			--hero-orange-thin: #fff7f3;
+			--hero-gray-regular: #64748b;
+			--hero-gray-light: #94a3b8;
+			--color-bg-secondary: #f8fafc;
+			--color-border: #d3e6f0;
+			--color-border-light: #e2e8f0;
+			--color-text-primary: #1e293b;
+			--color-text-secondary: #64748b;
+			--space-xs: 4px; --space-sm: 8px; --space-md: 16px; --space-lg: 24px; --space-xl: 32px;
+			--text-xs: 0.75rem; --text-sm: 0.875rem; --text-lg: 1.125rem; --text-xl: 1.25rem;
+			--radius-md: 8px; --radius-lg: 12px;
+			--sidebar-width: 280px; --header-height: 80px;
+			--transition-fast: 150ms ease;
+		}
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		body { font-family: "Inter", -apple-system, sans-serif; background: var(--color-bg-secondary); color: var(--color-text-primary); line-height: 1.6; }
+		.app { display: flex; flex-direction: column; min-height: 100vh; }
+		.app__body { display: flex; flex: 1; padding-top: var(--header-height); }
+		.header { position: fixed; top: 0; left: 0; right: 0; height: var(--header-height); background: var(--hero-blue); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-lg); z-index: 1000; }
+		.header__left { display: flex; align-items: center; gap: var(--space-xl); }
+		.header__logo { display: flex; align-items: center; gap: var(--space-md); }
+		.header__logo-icon { width: 40px; height: 40px; background: white; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--hero-blue); }
+		.header__logo-text { font-size: var(--text-xl); font-weight: 700; color: white; }
+		.header__nav { display: flex; gap: var(--space-sm); }
+		.header__nav-btn { padding: var(--space-sm) var(--space-md); background: transparent; border: none; border-radius: var(--radius-md); color: white; font-size: var(--text-sm); font-weight: 500; cursor: pointer; text-decoration: none; }
+		.header__nav-btn:hover { background: rgba(255,255,255,0.1); color: var(--hero-orange); }
+		.header__nav-btn--active { background: var(--hero-orange); }
+		.header__right { display: flex; align-items: center; gap: var(--space-md); }
+		.header__user { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: rgba(255,255,255,0.1); border-radius: var(--radius-lg); color: white; font-size: var(--text-sm); }
+		.header__user-avatar { width: 32px; height: 32px; background: var(--hero-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+		.sidebar { width: var(--sidebar-width); background: white; border-right: 1px solid var(--color-border); display: flex; flex-direction: column; position: fixed; left: 0; top: var(--header-height); bottom: 0; z-index: 100; }
+		.sidebar__header { padding: var(--space-lg); border-bottom: 1px solid var(--color-border-light); display: flex; align-items: center; justify-content: space-between; }
+		.sidebar__title { font-size: var(--text-sm); font-weight: 600; color: var(--hero-blue); text-transform: uppercase; }
+		.sidebar__toggle { background: transparent; border: none; color: var(--color-text-secondary); cursor: pointer; padding: var(--space-sm); border-radius: var(--radius-md); display: flex; }
+		.sidebar__toggle svg { width: 20px; height: 20px; }
+		.sidebar__nav { flex: 1; padding: var(--space-md); overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-sm); }
+		.nav-group { border: 1px solid var(--color-border-light); border-radius: var(--radius-lg); overflow: hidden; }
+		.nav-group__header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-md); background: var(--hero-blue-hairline); cursor: pointer; }
+		.nav-group__title { display: flex; align-items: center; gap: var(--space-sm); font-size: var(--text-sm); font-weight: 600; color: var(--hero-blue); }
+		.nav-group__chevron { width: 16px; height: 16px; color: var(--color-text-secondary); transition: transform var(--transition-fast); }
+		.nav-group--expanded .nav-group__chevron { transform: rotate(180deg); }
+		.nav-group__items { display: none; padding: var(--space-sm); background: white; }
+		.nav-group--expanded .nav-group__items { display: block; }
+		.nav-item { display: flex; align-items: center; gap: var(--space-md); padding: var(--space-sm) var(--space-md); background: transparent; border: none; border-radius: var(--radius-md); color: var(--color-text-secondary); font-size: var(--text-sm); cursor: pointer; text-decoration: none; width: 100%; }
+		.nav-item:hover { background: var(--hero-blue-hairline); color: var(--hero-blue); }
+		.nav-item--active { background: var(--hero-orange-thin); color: var(--hero-orange); font-weight: 500; }
+		.sidebar__help { margin: var(--space-md); padding: var(--space-lg); background: var(--hero-orange-thin); border-radius: var(--radius-lg); }
+		.sidebar__help-title { font-size: var(--text-sm); font-weight: 600; color: var(--hero-orange); margin-bottom: var(--space-sm); }
+		.sidebar__help-text { font-size: var(--text-xs); color: var(--color-text-secondary); margin-bottom: var(--space-md); }
+		.sidebar__help-btn { width: 100%; padding: var(--space-sm) var(--space-md); background: var(--hero-orange); border: none; border-radius: var(--radius-md); color: white; font-weight: 500; cursor: pointer; }
+		.main { flex: 1; margin-left: var(--sidebar-width); display: flex; flex-direction: column; min-height: calc(100vh - var(--header-height)); }
+		.main__content { flex: 1; padding: var(--space-lg); }
+		.loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px; color: var(--color-text-secondary); }
+		.loading__spinner { width: 40px; height: 40px; border: 3px solid var(--color-border); border-top-color: var(--hero-orange); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: var(--space-md); }
+		@keyframes spin { to { transform: rotate(360deg); } }
+	</style>
 </head>
 <body>
 	<div id="app"></div>
